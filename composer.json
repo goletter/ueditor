@@ -1,0 +1,24 @@
+{
+    "name": "goletter/ueditor",
+    "description": "百度UEditor服务端",
+    "keywords": [
+        "UEditor",
+        "laravel"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "goletter",
+            "email": "goletter@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Goletter\\Ueditor\\": "src/"
+        }
+    }
+}
