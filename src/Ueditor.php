@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Factory as Validator;
-use Yanthink\Ueditor\Contracts\Ueditor as UeditorInteface;
+use Goletter\Ueditor\Contracts\Ueditor as UeditorInteface;
 
 class Ueditor implements UeditorInteface
 {
