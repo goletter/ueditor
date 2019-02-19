@@ -1,9 +1,9 @@
 <?php
 
-namespace Yanthink\Ueditor\Http\Controllers;
+namespace Goletter\Ueditor\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Yanthink\Ueditor\Contracts\Ueditor;
+use Goletter\Ueditor\Contracts\Ueditor;
 use Illuminate\Routing\Controller;
 
 class UeditorController extends Controller

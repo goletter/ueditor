@@ -1,6 +1,6 @@
 <?php
 
-namespace Yanthink\Ueditor;
+namespace Goletter\Ueditor;
 
 use Closure;
 use Exception;

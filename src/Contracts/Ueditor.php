@@ -1,6 +1,6 @@
 <?php
 
-namespace Yanthink\Ueditor\Contracts;
+namespace Goletter\Ueditor\Contracts;
 
 interface Ueditor
 {
