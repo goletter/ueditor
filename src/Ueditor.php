@@ -6,9 +6,9 @@ use Closure;
 use Exception;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Http\Request;
+use Illuminate\Http\Str;
 use Illuminate\Contracts\Validation\Factory as Validator;
 use Goletter\Ueditor\Contracts\Ueditor as UeditorInteface;
-
 
 class Ueditor implements UeditorInteface
 {
@@ -154,7 +154,7 @@ class Ueditor implements UeditorInteface
                 abort(422, '文件无效');
             }
 
-            $fileSize = $file->getClientSize();
+            $fileSize = $file->getSize();
             $ext = $file->getClientOriginalExtension();
             $filename = $file->getClientOriginalName();
 
@@ -345,7 +345,7 @@ class Ueditor implements UeditorInteface
         $format = str_replace('{time}', time(), $format);
         $format = str_replace('{filename}', pathinfo(basename($filename), PATHINFO_BASENAME), $format);
         if (preg_match('/\{rand\:([\d]*)\}/i', $format, $matches)) {
-            $format = preg_replace('/\{rand\:[\d]*\}/i', str_random($matches[1] ?: 6), $format);
+            $format = preg_replace('/\{rand\:[\d]*\}/i', Str::random($matches[1] ?: 6), $format);
         }
 
         return $format . '.' . pathinfo(basename($filename), PATHINFO_EXTENSION);
