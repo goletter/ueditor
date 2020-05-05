@@ -1,5 +1,5 @@
 # UEditor
-百度UEditor服务端(定时维护)
+百度UEditor服务端
 
 ## 安装
 
