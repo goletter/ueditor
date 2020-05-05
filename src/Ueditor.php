@@ -6,7 +6,7 @@ use Closure;
 use Exception;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Http\Request;
-use Illuminate\Http\Str;
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Validation\Factory as Validator;
 use Goletter\Ueditor\Contracts\Ueditor as UeditorInteface;
 
