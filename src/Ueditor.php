@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Factory as Validator;
 use Goletter\Ueditor\Contracts\Ueditor as UeditorInteface;
 
+
 class Ueditor implements UeditorInteface
 {
     protected $request;
