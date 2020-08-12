@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Goletter\Ueditor\Contracts\Ueditor;
 use Illuminate\Routing\Controller;
 use JWTAuth;
+use Exception;
 
 class UeditorController extends Controller
 {
@@ -24,8 +25,13 @@ class UeditorController extends Controller
             return ['state' => '您的请求不存在'];
         }
 
-        if (strcmp(strtolower($request->input('token')), strtolower(JWTAuth::getToken())) && $action != 'config') {
-            return ['state' => '没有权限操作'];
+        if ($action != 'config') {
+            try {
+                $token = $request->input('token');
+                JWTAuth::setToken($token)->authenticate();
+            } catch (Exception $exception) {
+                return ['state' => '没有权限操作'];
+            }
         }
 
         return $this->{$action}();
