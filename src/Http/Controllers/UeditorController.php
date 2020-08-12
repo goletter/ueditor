@@ -5,7 +5,6 @@ namespace Goletter\Ueditor\Http\Controllers;
 use Illuminate\Http\Request;
 use Goletter\Ueditor\Contracts\Ueditor;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Str;
 use JWTAuth;
 
 class UeditorController extends Controller
@@ -25,7 +24,7 @@ class UeditorController extends Controller
             return ['state' => '您的请求不存在'];
         }
 
-        if (!Str::startsWith(strtolower($request->input('token')), JWTAuth::getToken()) && $action != 'config') {
+        if (strcmp(strtolower($request->input('token')), strtolower(JWTAuth::getToken())) && $action != 'config') {
             return ['state' => '没有权限操作'];
         }
 
