@@ -5,6 +5,8 @@ namespace Goletter\Ueditor\Http\Controllers;
 use Illuminate\Http\Request;
 use Goletter\Ueditor\Contracts\Ueditor;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
+use JWTAuth;
 
 class UeditorController extends Controller
 {
@@ -13,9 +15,6 @@ class UeditorController extends Controller
     public function __construct(Ueditor $ueditor)
     {
         $this->ueditor = $ueditor;
-        // $this->ueditor->setResolvePath(function($path) {
-        //     return \Storage::disk('qiniu')->downloadUrl($path);
-        // });
     }
 
     public function init(Request $request)
@@ -24,6 +23,10 @@ class UeditorController extends Controller
 
         if (!method_exists($this, $action)) {
             return ['state' => '您的请求不存在'];
+        }
+
+        if (!Str::startsWith(strtolower($request->input('token')), JWTAuth::getToken()) && $action != 'config') {
+            return ['state' => '没有权限操作'];
         }
 
         return $this->{$action}();
