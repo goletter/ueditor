@@ -4,9 +4,10 @@ namespace Goletter\Ueditor;
 
 use Closure;
 use Exception;
-use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
+use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Validation\Factory as Validator;
 use Goletter\Ueditor\Contracts\Ueditor as UeditorInteface;
 
@@ -221,7 +222,7 @@ class Ueditor implements UeditorInteface
                 $imgUrl = htmlspecialchars($imgUrl);
                 $imgUrl = str_replace('&amp;', '&', $imgUrl);
 
-                if (!in_array(array_get(parse_url($imgUrl), 'host'), $this->catcherLocalDomain)) {
+                if (!in_array(Arr::get(parse_url($imgUrl), 'host'), $this->catcherLocalDomain)) {
                     continue;
                 }
 
@@ -290,7 +291,7 @@ class Ueditor implements UeditorInteface
 
         $files = [];
         foreach ($allFiles as $file) {
-            if (ends_with($file, $allowFiles)) {
+            if (Str::endsWith($file, $allowFiles)) {
                 $files[] = [
                     'url' => $this->getUrl($file),
                 ];
